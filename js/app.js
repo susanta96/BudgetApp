@@ -17,6 +17,40 @@ class HTML {
     budgetLeft.innerHTML = `${amount}`;
   }
 
+  //Display a Message
+  printMessage(message, className) {
+    const messageWrapper = document.createElement('div');
+    messageWrapper.classList.add('text-center', 'alert', className);
+    messageWrapper.appendChild(document.createTextNode(message));
+
+    //Insert into HTMl
+    document.querySelector('.primary').insertBefore(messageWrapper, addExpenseForm);
+
+
+    //Time set 
+    setTimeout(() => {
+      document.querySelector('.primary .alert').remove();
+      //addExpenseForm.reset();
+    }, 3000);
+  }
+
+  //Display the expenses 
+  addExpenseTOList(name, amount) {
+    const expensesList = document.querySelector('#expenses ul');
+
+    //Create a List
+    const li = document.createElement('li');
+    li.className = "list-group-item d-flex justify-content-between align-items-center";
+    li.innerHTML = `
+          ${name}
+          <span class="badge badge-primary badge-pill">₹ ${amount}</span>
+      `;
+
+    //Insert into HTMl
+    expensesList.appendChild(li);
+
+  }
+
 }
 
 
@@ -56,5 +90,16 @@ function eventListeners() {
   //when a new expense added
   addExpenseForm.addEventListener('submit', function (e) {
     e.preventDefault();
+    //Read the values from the form 
+    const expenseName = document.querySelector('#expense').value;
+    const amount = document.querySelector('#amount').value;
+
+    if (expenseName === '' || amount === '') {
+      html.printMessage('Error! all the fields are mandatory', 'alert-danger');
+    } else {
+      //Add the expenses into the list
+      html.addExpenseTOList(expenseName, amount);
+    }
+
   });
 }
