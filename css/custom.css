@@ -1,0 +1,40 @@
+body {
+    /* background: #000428;  /* fallback for old browsers 
+background: -webkit-linear-gradient(to right, #004e92, #000428);  
+background: linear-gradient(to right, #004e92, #000428);  */
+background: rgb(131,58,180);
+background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,0.9612219887955182) 50%, rgba(252,176,69,1) 100%);
+}
+header {
+    margin: 30px 0;
+}
+.content {
+    padding:20px;
+}
+.main-content{
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+}
+.budget p{
+    margin-bottom: 0;
+    font-weight: bold;
+}
+.budget p span {
+    font-weight: normal;
+}
+#expenses {
+    margin-bottom: 30px;
+}
+h1{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 50%;
+    color: rgb(0, 247, 255);
+}
+h2 {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 30%;
+    color: rgb(52, 144, 206);
+    font-size: 24px;
+    margin-bottom:30px;
+}
