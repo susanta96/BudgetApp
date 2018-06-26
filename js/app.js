@@ -35,7 +35,7 @@ class HTML {
     //Time set 
     setTimeout(() => {
       document.querySelector('.primary .alert').remove();
-      //addExpenseForm.reset();
+      addExpenseForm.reset();
     }, 3000);
   }
 
@@ -61,6 +61,15 @@ class HTML {
     const budgetLeftRupee = budget.substractFromBudget(amount);
     budgetLeft.innerHTML = `${budgetLeftRupee}`;
 
+    //Check when 25% is Left
+    if ((budget.budget / 4) > budgetLeftRupee) {
+      budgetLeft.parentElement.parentElement.classList.remove('alert-success', 'alert-warning');
+      budgetLeft.parentElement.parentElement.classList.add('alert-danger');
+
+    } else if ((budget.budget / 2) > budgetLeftRupee) {
+      budgetLeft.parentElement.parentElement.classList.remove('alert-success');
+      budgetLeft.parentElement.parentElement.classList.add('alert-warning');
+    }
 
   }
 
@@ -114,6 +123,7 @@ function eventListeners() {
       //Add the expenses into the list
       html.addExpenseTOList(expenseName, amount);
       html.trackBudget(amount);
+      html.printMessage('Added...', 'alert-success');
     }
 
   });
