@@ -4,6 +4,11 @@ class Budget {
     this.budget = Number(budget);
     this.budgetLeft = this.budget;
   }
+
+  //Subrate from Budget
+  substractFromBudget(amount) {
+    return this.budgetLeft -= amount;
+  }
 }
 
 //Related to HTML
@@ -50,6 +55,15 @@ class HTML {
     expensesList.appendChild(li);
 
   }
+
+  //Subtract expenses
+  trackBudget(amount) {
+    const budgetLeftRupee = budget.substractFromBudget(amount);
+    budgetLeft.innerHTML = `${budgetLeftRupee}`;
+
+
+  }
+
 
 }
 
@@ -99,6 +113,7 @@ function eventListeners() {
     } else {
       //Add the expenses into the list
       html.addExpenseTOList(expenseName, amount);
+      html.trackBudget(amount);
     }
 
   });
