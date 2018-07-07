@@ -98,7 +98,7 @@ function eventListeners() {
     //Ask the weekly budget 
     userBudegt = prompt('Whats\s your budget for this week?');
     //validate the user budget
-    if (userBudegt === null || userBudegt === '' || userBudegt === '0') {
+    if (userBudegt === null || userBudegt === '' || userBudegt === '0' || isNaN(userBudegt)) {
       window.location.reload();
     } else {
       //After Budget is valid then instanciate the budget class
@@ -138,7 +138,7 @@ function validate(evt) {
   // Handle paste
   if (theEvent.type === 'paste') {
     key = event.clipboardData.getData('text/plain');
-    
+
   } else {
     // Handle key press
     var key = theEvent.keyCode || theEvent.which;
